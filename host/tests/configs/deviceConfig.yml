@@ -24,13 +24,8 @@
 
 deviceConfig:
     cpe1:
-        platform:   "llama.uk"
-        model:      "65"
-        target_directory: "/opt/"
-        test:
-            #TODO: Use the single profile file which contains all details (ds, hdmi, etc)
-            profile: ""
-            player:
-                tool: "gstreamer"
-                prerequisites:
-                    - "export EXP=test" # pre commands required to play the stream
+        platform:   "panel"
+        model:      "uk"
+        soc_vendor: "amlogic"
+        target_directory: "/opt/jyo"  # Target Directory on device
+        prompt: "" # Prompt string on console
