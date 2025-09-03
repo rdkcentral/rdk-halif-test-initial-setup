@@ -26,6 +26,6 @@ deviceConfig:
     cpe1:
         platform:   "panel"
         model:      "uk"
-        soc_vendor: "amlogic"
-        target_directory: "/opt/jyo"  # Target Directory on device
+        soc_vendor: "xx"
+        target_directory: "/opt/xx"  # Target Directory on device
         prompt: "" # Prompt string on console

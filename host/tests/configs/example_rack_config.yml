@@ -71,28 +71,28 @@ rackConfig:
                     consoles:
                         - default:
                             type: "ssh"
-                            port: 10022
+                            port: 20022
                             username: "root"
-                            ip: "10.242.30.17" #IP address
+                            ip: "" #IP address
                         - ssh_player:
                             type: "ssh"
-                            port: 10022
+                            port: 20022
                             username: "root"
-                            ip: "10.242.30.17" #IP address
+                            ip: "" #IP address
                             password: ''
                         - ssh_hal_test:
                             type: "ssh"
-                            port: 10022
+                            port: 20022
                             username: "root"
-                            ip: "10.242.30.17" #IP address
+                            ip: "" #IP address
                             password: ''
                         - serial:
-                            type: "serial"
-                            port: "COM3"
-                            baudRate: "115200"
-                            dataBits: "8"
-                            stopBits: "1"
-                            parity: None
-                            FlowControl: None
+                             type: "serial"
+                             port: "COM3"
+                             baudRate: "115200"
+                             dataBits: "8"
+                             stopBits: "1"
+                             parity: None
+                             FlowControl: None
 
 
