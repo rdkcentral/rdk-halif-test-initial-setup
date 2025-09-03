@@ -61,12 +61,13 @@ class initialSetupTests_test1_verify_build_version(utHelperClass):
 
         # Open Session for hal test
         self.hal_session = self.dut.getConsoleSession("serial")
+        self.hal_session.flush()
         self.hal_session.write("cat /version.txt")  # Send the command
-        output = self.hal_session.read_all()  # Read all output
+        output = self.hal_session.read_until("root")  # Read all output until "root"
         self.hal_session.close()  # Close the session
         result = input("Please enter build version to validate: ")
         assert output.__contains__(result)  # Verify the output
-        self.log.stepResultMessage(f'Output of lsmod: {output}')
+        self.log.stepResultMessage(f'Build Details : {output}')
 
         return
 
