@@ -22,6 +22,7 @@
 #* ******************************************************************************
 
 import os
+import re
 import sys
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -65,7 +66,7 @@ class initialSetupTests_test2_verify_lsmod(utHelperClass):
         output = self.hal_session.read_all()  # Read all output
         self.hal_session.close()  # Close the session
         self.log.step(f'Output of lsmod: {output}')
-        assert output.__contains__("Module                  Size  Used by")  # Verify the output
+        assert re.search(r'Module\s+Size\s+Used by', output)  # Verify the output using regex
 
         return
 

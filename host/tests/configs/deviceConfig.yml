@@ -24,7 +24,7 @@
 
 deviceConfig:
     cpe1:
-        platform:   "llama.uk"
+        platform:   "element"
         model:      "65"
         target_directory: "/opt/"
         test:
