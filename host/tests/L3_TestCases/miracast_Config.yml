@@ -1,0 +1,28 @@
+realtek: # Platform name
+  p2p0: 
+    p2p_interface:
+      - wpa_supplicant -i p2p0 -D nl80211 -c /opt/wpa-supplicant.conf -B -d
+      - wpa_cli -i p2p0
+    p2p_commands: 
+      - SET device_name
+      - SET config_methods pbc
+      - SET WIFI_DISPLAY 1
+      - P2P_SET disallow_freq 5180-5900
+      - freq 5180-5900
+      - WFD_SUBELEM_SET 0
+      - WFD_SUBELEM_SET 0 000600111c4400c8
+      - P2P_FIND
+amlogic:
+  p2p0: 
+    p2p_interface:
+      - wpa_supplicant -B -Dnl80211 -c /data/wpa-supplicant.conf -ip2p0 -d -t -f /opt/logs/wpa_supplicant.log
+      - wpa_cli -i p2p0
+    p2p_commands: 
+      - SET device_name
+      - SET config_methods pbc
+      - SET WIFI_DISPLAY 1
+      - P2P_SET disallow_freq 5180-5900
+      - freq 5180-5900
+      - WFD_SUBELEM_SET 0
+      - WFD_SUBELEM_SET 0 000600111c4400c8
+      - P2P_FIND
