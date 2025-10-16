@@ -82,9 +82,9 @@ rackConfig:
                             password: ''
                         - ssh_hal_test:
                             type: "ssh"
-                            port: 20022
+                            port: 10022
                             username: "root"
-                            ip: "" #IP address
+                            ip: "192.168.0.101" #IP address
                             password: ''
                         - serial:
                              type: "serial"
