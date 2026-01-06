@@ -8,7 +8,7 @@
 - [Test Setup Connections](#test-setup-connections)
 - [Test Cases](#test-cases)
   - [initialsetuptests_test1_verify_build_version.py](#initialsetuptests_test1_verify_build_versionpy)
-  - [nitialsetuptests_test2_verify_lsmod.py](#initialsetuptests_test2_verify_lsmodpy)
+  - [initialsetuptests_test2_verify_lsmod.py](#initialsetuptests_test2_verify_lsmodpy)
   - [initialsetuptests_test3_verify_westeros.py](#initialsetuptests_test3_verify_westerospy)
   - [initialsetuptests_test4_verify_miracast_test.py](#initialsetuptests_test4_verify_miracast_testpy)
 ## Acronyms, Terms and Abbreviations
@@ -20,11 +20,11 @@
 - `YAML`   - YAML Ain't Markup Language
 - `LAN`    - Local Area Network
 - `SSID`   - Service Set Identifier
-- `IP`     - Internet Protocal
+- `IP`     - Internet Protocol
 
 ## Setting Up Test Environment
 
-To execute `HAL` `L3` Python test cases, need a Python environment. Follow these steps mentioned in [HPK Public Documentation](https://github.com/rdkcentral/rdk-hpk-documentation/blob/main/README.md)
+To execute `HAL` `L3` Python test cases, you need a Python environment. Follow these steps mentioned in [HPK Public Documentation](https://github.com/rdkcentral/rdk-hpk-documentation/blob/main/README.md)
 
 ### Update Configuration Files
 
@@ -39,7 +39,7 @@ In this file, update the configuration to define the console sessions for the `D
 |Console Session|Description|
 |---------------|-----------|
 |default|This session is used for basic operations, such as verifying the device status and retrieving the MAC address|
-|ssh_hal_test|Utilized by the `lsmod` and `miracast`testcase|
+|ssh_hal_test|Utilized by the `lsmod` and `miracast` testcase|
 |ssh_player|Utilized by the `westeros` test|
 
 ```yaml
@@ -111,7 +111,7 @@ deviceConfig:
 
 #### Test Setup Configuration File
 
-Miracast configuration File: [miracast_Config.yml](./host/tests/L3_TestCases/miracast_Config.yml)
+Miracast configuration File for miracast testcase: [miracast_Config.yml](./host/tests/L3_TestCases/miracast_Config.yml)
 
 ```yaml
 realtek: # Platform name
@@ -145,6 +145,8 @@ amlogic:
 ```
 [initialSetupTests_test4_verify_miracast_test.py](./host/tests/L3_TestCases/initialSetupTests_test4_verify_miracast_test.py), utilizes this yaml file to get the commands for its operation.
 
+For any other soc, add the commands accordingly here.
+
 ## Run Test Cases
 
 Activate python environment
@@ -163,7 +165,7 @@ python <TestCaseName.py> --config </PATH>/ut/host/tests/configs/example_rack_con
 
 ## Test Setup Connections
 
-Make sure the device under test `DUT` is connected to wifi, `LAN` and a `CEC` supported device for waking up from deepsleep before starting the test case.
+Make sure the device under test `DUT` is connected to wifi, serial for the tests to work. Please go through the prorequisites below for more details.
 
 ### Example WIFI Configuration
 If the `DUT` supports WPA, follow these steps to configure the `WIFI`:
@@ -173,7 +175,7 @@ If the `DUT` supports WPA, follow these steps to configure the `WIFI`:
 Use the router's `SSID` and password to create a configuration file:
 
 ```bash
-wpa_passphrase <"Router SSID"> <"Passsword" > /data/wpa-supplicant.conf
+wpa_passphrase <"Router SSID"> <"Password" > /data/wpa-supplicant.conf
 ```
 For `Realtek` platform devices add the below one in wpa-supplicant.conf
 
@@ -196,6 +198,7 @@ If still not getting `IP` for `wlan0` bridge interface try:
 ifconfig wlan0 down
 ifconfig wlan0 up
 ```
+Note: This is an example configuration for `Realtek` soc, do changes accordingly for your soc, for the miracast test case.
 
 ## Test Cases
 ### initialSetupTests_test1_verify_build_version.py
@@ -243,7 +246,9 @@ Requires ssh connection. Make sure required details are filled in [deviceConfig.
 
 #### Prerequisite - test03
 
-Requires ssh connection. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment)
+Requires ssh connection. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment).
+
+Requires display to be connected.
 
 
 #### Test Steps - test03
@@ -261,7 +266,7 @@ Requires ssh connection. Make sure required details are filled in [deviceConfig.
 
 #### Prerequisite - test04
 
-Requires ssh connection from wlan0. Perform [Test Setup Connections](#test-setup-connections) and make sure that wlan0 is up.
+Requires ip address from wlan0 for ssh connection and other operations. Perform [Test Setup Connections](#test-setup-connections) and make sure that wlan0 is up.
 
 #### Test Steps - test04
 
