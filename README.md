@@ -163,7 +163,7 @@ python <TestCaseName.py> --config </PATH>/ut/host/tests/configs/example_rack_con
 
 ## Test Setup Connections
 
-Make sure the device under test `DUT` is connected to wifi, `LAN` and a `CEC` supported device for waking up from deepsleep before starting the test case.
+Make sure the device under test `DUT` is connected to wifi, serial for the tests to work. Please go through the prorequisites below for more details.
 
 ### Example WIFI Configuration
 If the `DUT` supports WPA, follow these steps to configure the `WIFI`:
@@ -236,7 +236,8 @@ Requires ssh connection. Make sure required details are filled in [deviceConfig.
 
 #### Prerequisite - test03
 
-Requires ssh connection. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment)
+Requires ssh connection. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment).
+
 Requires display to be connected.
 
 
