@@ -163,7 +163,7 @@ python <TestCaseName.py> --config </PATH>/ut/host/tests/configs/example_rack_con
 
 ## Test Setup Connections
 
-Make sure the device under test `DUT` is connected to wifi, serial for the tests to work. Please go through the prorequisites below for more details.
+Make sure the device under test `DUT` is connected to wifi, `LAN` and a `CEC` supported device for waking up from deepsleep before starting the test case.
 
 ### Example WIFI Configuration
 If the `DUT` supports WPA, follow these steps to configure the `WIFI`:
@@ -174,6 +174,13 @@ Use the router's `SSID` and password to create a configuration file:
 
 ```bash
 wpa_passphrase <"Router SSID"> <"Passsword" > /data/wpa-supplicant.conf
+```
+For `Realtek` platform devices add the below one in wpa-supplicant.conf
+
+```bash
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=0
+update_config=1
 ```
 
 **Start the wpa_supplicant daemon:**
@@ -236,9 +243,7 @@ Requires ssh connection. Make sure required details are filled in [deviceConfig.
 
 #### Prerequisite - test03
 
-Requires ssh connection. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment).
-
-Requires display to be connected.
+Requires ssh connection. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment)
 
 
 #### Test Steps - test03
@@ -256,8 +261,7 @@ Requires display to be connected.
 
 #### Prerequisite - test04
 
-Requires ssh connection from wlan0. Make sure required details are filled in [deviceConfig.yml](./host/tests/configs/deviceConfig.yml) and [example_rack_config.yml](./host/tests/configs/example_rack_config.yml) as explained in [Setting Up Test Environment](#setting-up-test-environment)
-
+Requires ssh connection from wlan0. Perform [Test Setup Connections](#test-setup-connections) and make sure that wlan0 is up.
 
 #### Test Steps - test04
 
